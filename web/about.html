@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>关于我 - 我的大学生活</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: "微软雅黑", sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #3659ca, #518ae0);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+        }
+        
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .nav {
+            background: #518ae0;
+            padding: 15px;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 20px;
+            font-size: 18px;
+            padding: 5px 10px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+        
+        .nav a:hover {
+            color: #ffd700;
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        .content {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #3659ca;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: #518ae0;
+        }
+        
+        .profile-container {
+            margin-bottom: 50px;
+        }
+        
+        .profile-info {
+            width: 100%;
+        }
+        
+        .profile-card {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin-bottom: 30px;
+        }
+        
+        .profile-card h3 {
+            color: #3659ca;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+        
+        .info-item {
+            display: flex;
+            margin-bottom: 15px;
+        }
+        
+        .info-label {
+            width: 120px;
+            font-weight: bold;
+            color: #555;
+        }
+        
+        .info-content {
+            flex: 1;
+        }
+        
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .skill-item {
+            background: #f0f7ff;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            border: 1px solid #d0e3ff;
+        }
+        
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .timeline:before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: #518ae0;
+            transform: translateX(-50%);
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 40px;
+            width: 50%;
+            padding: 0 40px;
+        }
+        
+        .timeline-item:nth-child(odd) {
+            left: 0;
+        }
+        
+        .timeline-item:nth-child(even) {
+            left: 50%;
+        }
+        
+        .timeline-content {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+            position: relative;
+        }
+        
+        .timeline-content:after {
+            content: '';
+            position: absolute;
+            top: 20px;
+            width: 20px;
+            height: 20px;
+            background: #518ae0;
+            border-radius: 50%;
+        }
+        
+        .timeline-item:nth-child(odd) .timeline-content:after {
+            right: -50px;
+        }
+        
+        .timeline-item:nth-child(even) .timeline-content:after {
+            left: -50px;
+        }
+        
+        .timeline-year {
+            font-weight: bold;
+            color: #3659ca;
+            margin-bottom: 10px;
+        }
+        
+        .footer {
+            background: #3659ca;
+            color: white;
+            padding: 30px 20px;
+            margin-top: 50px;
+            text-align: center;
+        }
+        
+        .footer p {
+            margin-bottom: 10px;
+        }
+        
+        .social-links {
+            margin-top: 15px;
+        }
+        
+        .social-links a {
+            color: white;
+            margin: 0 10px;
+            font-size: 1.2rem;
+            text-decoration: none;
+        }
+        
+        @media (max-width: 768px) {
+            .nav a {
+                margin: 5px 10px;
+            }
+            
+            .timeline:before {
+                left: 30px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 20px;
+            }
+            
+            .timeline-item:nth-child(even) {
+                left: 0;
+            }
+            
+            .timeline-content:after {
+                left: -40px !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>我的大学生活</h1>
+        <p>记录成长，分享美好</p>
+    </div>
+
+    <div class="nav">
+        <a href="../index.html">主页</a>
+        <a href="about.html">关于我</a>
+        <a href="interests.html">兴趣爱好</a>
+        <a href="gallery.html">作品展示</a>
+        <a href="contact.html">联系方式</a>
+    </div>
+
+    <div class="content">
+        <h2 class="section-title">关于我</h2>
+        
+        <div class="profile-container">
+            <div class="profile-info">
+                <div class="profile-card">
+                    <h3>基本信息</h3>
+                    <div class="info-item">
+                        <div class="info-label">姓名：</div>
+                        <div class="info-content">邵成彦</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">学校：</div>
+                        <div class="info-content">华中科技大学</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">专业：</div>
+                        <div class="info-content">计算机科学与技术</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">年级：</div>
+                        <div class="info-content">大一</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">家乡：</div>
+                        <div class="info-content">江西九江</div>
+                    </div>
+                </div>
+                
+                <div class="profile-card">
+                    <h3>个人简介</h3>
+                    <p>我是一名热爱技术、积极向上的大学生。在华中科技大学的学习生活中，我不仅注重专业知识的学习，还积极参与各类实践活动和社团活动。</p>
+                    <p>我相信技术可以改变世界，希望通过自己的努力，在计算机领域有所建树。我喜欢挑战自我，不断学习新知识，探索未知领域。</p>
+                    <p>在校期间，我担任了班级学习委员，并参与了多个科研项目和竞赛，积累了丰富的实践经验。我相信理论与实践相结合才是最好的学习方式。</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="profile-card">
+            <h3>技能特长</h3>
+            <div class="skills-container">
+                <div class="skill-item">微积分</div>
+                <div class="skill-item">线性代数</div>
+                <div class="skill-item">C</div>
+                <div class="skill-item">英语阅读</div>
+                <div class="skill-item">乒乓球</div>
+                <div class="skill-item">手工创作</div>
+                <div class="skill-item">团队协作</div>
+                <div class="skill-item">交流沟通</div>
+              
+               
+            </div>
+        </div>
+        
+        <div class="profile-card">
+            <h3>教育经历</h3>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">2021年 - 至今</div>
+                        <h4>华中科技大学</h4>
+                        <p>计算机科学与技术专业</p>
+                        <p>主修课程：微积分，线性代数，C语言程序设计等</p>
+                       
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">2018年 - 2021年</div>
+                        <h4>都昌县第二中学</h4>
+                        <p>重点班</p>
+                        <p>担任班级学习委员，获得校级三好学生等荣誉</p>
+                        <p>参与数学奥林匹克竞赛，获得省级三等奖</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="profile-card">
+            <h3>学习目标</h3>
+            <ul style="padding-left: 20px; margin-top: 15px;">
+                <li style="margin-bottom: 10px;">深入学习计算机专业核心课程，夯实理论基础</li>
+                <li style="margin-bottom: 10px;">参与至少2个完整的项目开发，提升实践能力</li>
+                <li style="margin-bottom: 10px;">学习前沿技术，如人工智能、大数据等</li>
+                <li style="margin-bottom: 10px;">提升英语水平，通过英语六级考试</li>
+                <li style="margin-bottom: 10px;">积极参与科研项目，争取发表学术论文</li>
+                <li>培养团队协作能力，为未来职业生涯做好准备</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>© 2024 我的大学生活 | 版权所有</p>
+        <p>记录青春，珍藏回忆</p>
+        <div class="social-links">
+            <a href="#">微信</a>
+            <a href="#">微博</a>
+            <a href="#">知乎</a>
+            <a href="#">B站</a>
+        </div>
+    </div>
+</body>
+</html>

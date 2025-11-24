@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>作品展示 - 我的大学生活</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: "微软雅黑", sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #3659ca, #518ae0);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+        }
+        
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .nav {
+            background: #518ae0;
+            padding: 15px;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 20px;
+            font-size: 18px;
+            padding: 5px 10px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+        
+        .nav a:hover, .nav a.active {
+            color: #ffd700;
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        .content {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #3659ca;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: #518ae0;
+        }
+        
+        .intro {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin-bottom: 40px;
+            text-align: center;
+        }
+        
+        .intro p {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+        
+        .learning-path {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin-bottom: 40px;
+        }
+        
+        .path-container {
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            margin: 30px 0;
+        }
+        
+        .path-container:before {
+            content: '';
+            position: absolute;
+            left: 30px;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: #518ae0;
+            border-radius: 2px;
+        }
+        
+        .path-item {
+            display: flex;
+            margin-bottom: 40px;
+            position: relative;
+        }
+        
+        .path-icon {
+            width: 60px;
+            height: 60px;
+            background: #518ae0;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            z-index: 1;
+            flex-shrink: 0;
+            margin-right: 30px;
+        }
+        
+        .path-content {
+            flex: 1;
+            background: #f8fbff;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #518ae0;
+        }
+        
+        .path-content h3 {
+            color: #3659ca;
+            margin-bottom: 10px;
+        }
+        
+        .path-content p {
+            color: #666;
+        }
+        
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        
+        .project-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .project-image {
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .project-card:hover .project-image img {
+            transform: scale(1.05);
+        }
+        
+        .project-content {
+            padding: 25px;
+        }
+        
+        .project-title {
+            font-size: 1.4rem;
+            color: #3659ca;
+            margin-bottom: 10px;
+        }
+        
+        .project-description {
+            color: #666;
+            margin-bottom: 20px;
+        }
+        
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .tech-tag {
+            background: #f0f7ff;
+            color: #518ae0;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            border: 1px solid #d0e3ff;
+        }
+        
+        .project-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .project-link {
+            display: inline-block;
+            background: #518ae0;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        
+        .project-link:hover {
+            background: #3659ca;
+            transform: translateY(-2px);
+        }
+        
+        .project-link.outline {
+            background: transparent;
+            border: 2px solid #518ae0;
+            color: #518ae0;
+        }
+        
+        .project-link.outline:hover {
+            background: #518ae0;
+            color: white;
+        }
+        
+        .achievements-section {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin-bottom: 40px;
+        }
+        
+        .achievements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .achievement-card {
+            background: #f8fbff;
+            padding: 25px;
+            border-radius: 8px;
+            border-left: 4px solid #518ae0;
+            transition: transform 0.3s ease;
+        }
+        
+        .achievement-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .achievement-icon {
+            font-size: 2.5rem;
+            color: #518ae0;
+            margin-bottom: 15px;
+        }
+        
+        .achievement-title {
+            font-size: 1.2rem;
+            color: #3659ca;
+            margin-bottom: 10px;
+        }
+        
+        .achievement-date {
+            color: #888;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+        
+        .skills-section {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .skill-category {
+            flex: 1;
+            min-width: 250px;
+        }
+        
+        .skill-category h3 {
+            color: #3659ca;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+        
+        .skill-item {
+            margin-bottom: 15px;
+        }
+        
+        .skill-name {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+        }
+        
+        .skill-bar {
+            height: 8px;
+            background: #f0f0f0;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        
+        .skill-level {
+            height: 100%;
+            background: #518ae0;
+            border-radius: 4px;
+        }
+        
+        .future-plans {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin-top: 40px;
+        }
+        
+        .plans-list {
+            margin-left: 20px;
+            margin-top: 20px;
+        }
+        
+        .plans-list li {
+            margin-bottom: 15px;
+            padding-left: 10px;
+        }
+        
+        .footer {
+            background: #3659ca;
+            color: white;
+            padding: 30px 20px;
+            margin-top: 50px;
+            text-align: center;
+        }
+        
+        .footer p {
+            margin-bottom: 10px;
+        }
+        
+        .social-links {
+            margin-top: 15px;
+        }
+        
+        .social-links a {
+            color: white;
+            margin: 0 10px;
+            font-size: 1.2rem;
+            text-decoration: none;
+        }
+        
+        @media (max-width: 768px) {
+            .nav a {
+                margin: 5px 10px;
+            }
+            
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .project-links {
+                flex-direction: column;
+            }
+            
+            .achievements-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .skills-container {
+                flex-direction: column;
+            }
+            
+            .path-container:before {
+                left: 30px;
+            }
+            
+            .path-icon {
+                margin-right: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>我的大学生活</h1>
+        <p>记录成长，分享美好</p>
+    </div>
+
+    <div class="nav">
+        <a href="../index.html">主页</a>
+        <a href="about.html">关于我</a>
+        <a href="interests.html">兴趣爱好</a>
+        <a href="gallery.html" class="active">作品展示</a>
+        <a href="contact.html">联系方式</a>
+    </div>
+
+    <div class="content">
+        <div class="intro">
+            <h2 class="section-title">我的学习与成长</h2>
+            <p>作为一名大一新生，我正在逐步探索计算机科学的世界。这里记录了我入学以来的学习历程、项目实践和个人成长。</p>
+            <p>虽然我的经验尚浅，但我对学习充满热情，愿意不断尝试和挑战自己。这些作品见证了我从零开始的每一步。</p>
+        </div>
+
+        <div class="learning-path">
+            <h2 class="section-title">我的学习路径</h2>
+            <div class="path-container">
+                <div class="path-item">
+                    <div class="path-icon">1</div>
+                    <div class="path-content">
+                        <h3>入学初体验</h3>
+                        <p>刚进入大学，适应新的学习环境和生活方式。参加新生培训，了解专业方向和课程设置。</p>
+                    </div>
+                </div>
+                
+                <div class="path-item">
+                    <div class="path-icon">2</div>
+                    <div class="path-content">
+                        <h3>编程入门</h3>
+                        <p>学习C语言基础，掌握变量、循环、条件判断等基本概念。完成第一个"Hello World"程序。</p>
+                    </div>
+                </div>
+                
+                <div class="path-item">
+                    <div class="path-icon">3</div>
+                    <div class="path-content">
+                        <h3>网页设计初探</h3>
+                        <p>学习HTML和CSS基础知识，创建第一个静态网页。理解网页结构和样式的基本原理。</p>
+                    </div>
+                </div>
+                
+                <div class="path-item">
+                    <div class="path-icon">4</div>
+                    <div class="path-content">
+                        <h3>项目实践</h3>
+                        <p>将所学知识应用于实践，完成个人网站和简单应用程序的开发，提升解决问题的能力。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="section-title">我的项目作品</h2>
+        <div class="projects-grid">
+            <!-- 项目1 -->
+            <div class="project-card">
+                <div class="project-image">
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="个人简历网页">
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">个人简历网页</h3>
+                    <p class="project-description">使用HTML和CSS创建的静态个人简历网页，包含基本信息、教育背景和技能介绍。</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">HTML</span>
+                        <span class="tech-tag">CSS</span>
+                        <span class="tech-tag">响应式设计</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link">查看演示</a>
+                        <a href="#" class="project-link outline">源代码</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 项目2 -->
+            <div class="project-card">
+                <div class="project-image">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="简单计算器">
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">简单计算器</h3>
+                    <p class="project-description">使用C语言编写的控制台计算器，支持加减乘除基本运算，是我第一个完整的编程项目。</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">C语言</span>
+                        <span class="tech-tag">控制台应用</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link">查看代码</a>
+                        <a href="#" class="project-link outline">项目报告</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 项目3 -->
+            <div class="project-card">
+                <div class="project-image">
+                    <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="课程表应用">
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">课程表应用</h3>
+                    <p class="project-description">基于HTML、CSS和JavaScript开发的简单课程表应用，可以查看每周课程安排。</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">HTML/CSS</span>
+                        <span class="tech-tag">JavaScript</span>
+                        <span class="tech-tag">本地存储</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link">查看演示</a>
+                        <a href="#" class="project-link outline">源代码</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 项目4 -->
+            <div class="project-card">
+                <div class="project-image">
+                    <img src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="校园生活博客">
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">校园生活博客</h3>
+                    <p class="project-description">记录大学生活的个人博客，分享学习心得、校园活动和日常生活感悟。</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">HTML/CSS</span>
+                        <span class="tech-tag">内容管理</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link">访问博客</a>
+                        <a href="#" class="project-link outline">设计思路</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="achievements-section">
+            <h2 class="section-title">收获与成就</h2>
+            <div class="achievements-grid">
+                <div class="achievement-card">
+                    <div class="achievement-icon">🎓</div>
+                    <h3 class="achievement-title">成功入学</h3>
+                    <div class="achievement-date">2023年9月</div>
+                    <p>通过高考顺利进入华中科技大学计算机专业，开启大学生涯。</p>
+                </div>
+                
+                <div class="achievement-card">
+                    <div class="achievement-icon">💻</div>
+                    <h3 class="achievement-title">编程入门</h3>
+                    <div class="achievement-date">2023年10月</div>
+                    <p>完成第一门编程课程，掌握C语言基础，能够编写简单程序。</p>
+                </div>
+                
+                <div class="achievement-card">
+                    <div class="achievement-icon">🌐</div>
+                    <h3 class="achievement-title">网页设计</h3>
+                    <div class="achievement-date">2023年11月</div>
+                    <p>学习HTML和CSS，完成个人网站建设，掌握网页布局基础。</p>
+                </div>
+                
+                <div class="achievement-card">
+                    <div class="achievement-icon">👥</div>
+                    <h3 class="achievement-title">社团参与</h3>
+                    <div class="achievement-date">2023年12月</div>
+                    <p>加入计算机协会，参与技术分享活动，拓展专业视野。</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="skills-section">
+            <h2 class="section-title">当前技能水平</h2>
+            <div class="skills-container">
+                <div class="skill-category">
+                    <h3>编程语言</h3>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>C语言</span>
+                            <span>70%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-level" style="width: 70%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>HTML/CSS</span>
+                            <span>65%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-level" style="width: 65%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>JavaScript</span>
+                            <span>40%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-level" style="width: 40%"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>专业基础</h3>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>数据结构</span>
+                            <span>50%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-level" style="width: 50%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>计算机导论</span>
+                            <span>80%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-level" style="width: 80%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>高等数学</span>
+                            <span>75%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-level" style="width: 75%"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>软技能</h3>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>团队协作</span>
+                            <span>70%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-level" style="width: 70%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>学习能力</span>
+                            <span>85%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-level" style="width: 85%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>时间管理</span>
+                            <span>60%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-level" style="width: 60%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="future-plans">
+            <h2 class="section-title">未来学习计划</h2>
+            <p>作为一名大一学生，我对未来的学习充满期待。以下是我接下来一年的学习计划：</p>
+            <ul class="plans-list">
+                <li>深入学习数据结构与算法，为后续专业课程打下坚实基础</li>
+                <li>掌握Java或Python一门高级编程语言，扩展编程能力</li>
+                <li>学习数据库原理，了解数据存储和管理的基本方法</li>
+                <li>参与至少一个团队项目，提升协作能力和项目管理经验</li>
+                <li>探索前端框架(如React)或后端技术，确定技术兴趣方向</li>
+                <li>参加编程竞赛或项目比赛，锻炼解决实际问题的能力</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>© 2024 我的大学生活 | 版权所有</p>
+        <p>记录青春，珍藏回忆</p>
+        <div class="social-links">
+            <a href="#">微信</a>
+            <a href="#">微博</a>
+            <a href="#">知乎</a>
+            <a href="#">B站</a>
+        </div>
+    </div>
+</body>
+</html>

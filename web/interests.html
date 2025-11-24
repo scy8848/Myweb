@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>兴趣爱好 - 我的大学生活</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: "微软雅黑", sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #3659ca, #518ae0);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+        }
+        
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .nav {
+            background: #518ae0;
+            padding: 15px;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 20px;
+            font-size: 18px;
+            padding: 5px 10px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+        
+        .nav a:hover {
+            color: #ffd700;
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        .content {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #3659ca;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: #518ae0;
+        }
+        
+        .interests-container {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+        
+        .interest-category {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .interest-category:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .category-header {
+            background: linear-gradient(135deg, #518ae0, #3659ca);
+            color: white;
+            padding: 20px 30px;
+        }
+        
+        .category-header h3 {
+            font-size: 1.8rem;
+            margin-bottom: 5px;
+        }
+        
+        .category-content {
+            padding: 30px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            align-items: flex-start;
+        }
+        
+        .interest-image {
+            flex: 1;
+            min-width: 300px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .interest-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .interest-details {
+            flex: 2;
+            min-width: 300px;
+        }
+        
+        .interest-description {
+            margin-bottom: 20px;
+        }
+        
+        .interest-description p {
+            margin-bottom: 15px;
+        }
+        
+        .achievements {
+            background: #f0f7ff;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #518ae0;
+        }
+        
+        .achievements h4 {
+            color: #3659ca;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+        
+        .achievements ul {
+            padding-left: 20px;
+        }
+        
+        .achievements li {
+            margin-bottom: 10px;
+        }
+        
+        .footer {
+            background: #3659ca;
+            color: white;
+            padding: 30px 20px;
+            margin-top: 50px;
+            text-align: center;
+        }
+        
+        .footer p {
+            margin-bottom: 10px;
+        }
+        
+        .social-links {
+            margin-top: 15px;
+        }
+        
+        .social-links a {
+            color: white;
+            margin: 0 10px;
+            font-size: 1.2rem;
+            text-decoration: none;
+        }
+        
+        @media (max-width: 768px) {
+            .nav a {
+                margin: 5px 10px;
+            }
+            
+            .category-content {
+                flex-direction: column;
+            }
+            
+            .interest-image, .interest-details {
+                min-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>我的大学生活</h1>
+        <p>记录成长，分享美好</p>
+    </div>
+
+    <div class="nav">
+        <a href="../index.html">主页</a>
+        <a href="about.html">关于我</a>
+        <a href="interests.html">兴趣爱好</a>
+        <a href="gallery.html">作品展示</a>
+        <a href="contact.html">联系方式</a>
+    </div>
+
+    <div class="content">
+        <h2 class="section-title">我的兴趣爱好</h2>
+        
+        <div class="interests-container">
+            <!-- 运动 -->
+            <div class="interest-category">
+                <div class="category-header">
+                    <h3>🏃 运动健身</h3>
+                    <p>保持活力，挑战自我</p>
+                </div>
+                <div class="category-content">
+                    <div class="interest-image">
+                        <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="运动健身">
+                    </div>
+                    <div class="interest-details">
+                        <div class="interest-description">
+                            <p>运动是我生活中不可或缺的一部分，它不仅帮助我保持健康的体魄，还让我学会了坚持和自律。</p>
+                            <p>我特别喜欢篮球和跑步，每周都会安排固定的时间进行锻炼。篮球让我体会到团队协作的重要性，而跑步则是我思考问题、放松心情的最佳方式。</p>
+                            <p>在运动中，我学会了面对挑战、超越自我，这种精神也影响着我的学习和生活。</p>
+                        </div>
+                        <div class="achievements">
+                            <h4>相关经历与成就</h4>
+                            <ul>
+                                <li>2022年校运会男子1500米比赛第三名</li>
+                                
+                                
+                                <li>组织班级体育活动，促进同学间的交流与友谊</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 阅读 -->
+            <div class="interest-category">
+                <div class="category-header">
+                    <h3>📚 阅读写作</h3>
+                    <p>探索知识，表达思想</p>
+                </div>
+                <div class="category-content">
+                    <div class="interest-image">
+                        <img src="https://images.unsplash.com/photo-1481627834876-b7833e8f5570?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="阅读写作">
+                    </div>
+                    <div class="interest-details">
+                        <div class="interest-description">
+                            <p>阅读是我获取知识、开阔视野的重要途径。我喜欢阅读各类书籍，特别是科技、历史和文学类作品。</p>
+                            <p>通过阅读，我不仅学到了专业知识，还培养了批判性思维和解决问题的能力。写作则是我整理思路、表达观点的方式，帮助我更好地理解和消化所学知识。</p>
+                            <p>我习惯在阅读时做笔记，记录自己的思考和感悟，这些笔记成为了我宝贵的知识财富。</p>
+                        </div>
+                        <div class="achievements">
+                            <h4>相关经历与成就</h4>
+                            <ul>
+                                <li>参与校图书馆读书分享会，分享《人类简史》阅读心得</li>
+                                <li>在校报发表多篇文章，包括科技评论和校园生活随笔</li>
+                                <li>建立个人读书笔记库，整理超过200本书的读书笔记</li>
+                                <li>获得校级"阅读之星"荣誉称号</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            
+            
+           
+            
+            <!-- 摄影 -->
+            <div class="interest-category">
+                <div class="category-header">
+                    <h3>📷 摄影记录</h3>
+                    <p>捕捉美好，记录生活</p>
+                </div>
+                <div class="category-content">
+                    <div class="interest-image">
+                        <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="摄影记录">
+                    </div>
+                    <div class="interest-details">
+                        <div class="interest-description">
+                            <p>摄影是我记录生活、表达情感的方式。我喜欢通过镜头捕捉生活中的美好瞬间，无论是校园风景、人物肖像还是活动纪实。</p>
+                            <p>摄影教会了我观察细节、把握时机，也让我更加关注周围的环境和人物。每一张照片背后都有一个故事，记录着时光的痕迹。</p>
+                            <p>我喜欢尝试不同的摄影风格和技巧，从风景摄影到人像摄影，从黑白摄影到创意摄影，不断探索摄影的可能性。</p>
+                        </div>
+                        <div class="achievements">
+                            <h4>相关经历与成就</h4>
+                            <ul>
+                                <li>担任校记者团摄影记者，为校报和官网提供照片</li>
+                                <li>参加校园摄影比赛，作品《校园晨曦》获得一等奖</li>
+                                <li>建立个人摄影作品集，记录大学生活的点滴</li>
+                                <li>为多个学生活动提供摄影支持，包括毕业典礼、文艺晚会等</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>© 2024 我的大学生活 | 版权所有</p>
+        <p>记录青春，珍藏回忆</p>
+        <div class="social-links">
+            <a href="#">微信</a>
+            <a href="#">微博</a>
+            <a href="#">知乎</a>
+            <a href="#">B站</a>
+        </div>
+    </div>
+</body>
+</html>
